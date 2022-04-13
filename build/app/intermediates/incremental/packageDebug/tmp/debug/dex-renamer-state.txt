@@ -1,0 +1,7 @@
+#Wed Apr 13 22:43:19 BDT 2022
+base.1=/home/shafiqul/AndroidStudioProjects/chakri_ase_company/build/app/intermediates/dex/debug/mergeDexDebug/classes2.dex
+path.1=classes2.dex
+base.0=/home/shafiqul/AndroidStudioProjects/chakri_ase_company/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex
