@@ -1,0 +1,9 @@
+# IDE generated files #
+#######################
+.idea/*
+nbproject/*
+.dart_tool/*
+
+# Land_project files #
+#######################
+build/*

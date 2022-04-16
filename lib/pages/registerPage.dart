@@ -17,24 +17,24 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPage extends State<RegisterPage> {
-  late String errormsg, tokenValue, name, phone, password;
+  late String errormsg, tokenValue, email, phone, password;
   late bool error, showprogress, isUserLoginIn, responseTypeStatus = false;
 
   late SharedPreferences logindata;
 
   var _phone = TextEditingController();
   var _password = TextEditingController();
-  var _name = TextEditingController();
+  var _email = TextEditingController();
 
   // ignore: missing_return
   Future<void> startLogin() async {
-    String apiurl = apiBaseUrl + "member.php"; //api url
+    String apiurl = apiBaseUrl + "company.php"; //api url
     //dont use http://localhost , because emulator don't get that address
     //insted use your local IP address or use live URL
     //hit "ipconfig" in windows or "ip a" in linux to get you local IP
     //print(phone);
 
-    var response = await http.post(Uri.parse(apiurl), body: {'phone': phone, 'password': password, 'name': name, 'action': 'register_profile'});
+    var response = await http.post(Uri.parse(apiurl), body: {'phone': phone, 'password': password, 'email': email, 'action': 'register_profile'});
 
     if (response.statusCode == 200) {
       var jsondata = json.decode(response.body);
@@ -69,7 +69,7 @@ class _RegisterPage extends State<RegisterPage> {
     errormsg = "";
     error = false;
     showprogress = false;
-    name = "";
+    email = "";
     responseTypeStatus = false;
     super.initState();
 
@@ -137,7 +137,7 @@ class _RegisterPage extends State<RegisterPage> {
             margin: EdgeInsets.only(top: 20),
             padding: EdgeInsets.all(10),
             child: Text(
-              "Please enter your information for register",
+              "Please enter your company information for register",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 11,
@@ -157,15 +157,15 @@ class _RegisterPage extends State<RegisterPage> {
             padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
             margin: EdgeInsets.only(top: 10),
             child: TextField(
-              controller: _name, //set phone controller
+              controller: _email, //set phone controller
               style: TextStyle(color: Color(0xFF000000), fontSize: 10),
               decoration: myInputDecoration(
-                label: "Your Name",
+                label: "Company Email",
                 icon: Icons.male,
               ),
               onChanged: (value) {
                 //set phone  text on change
-                name = value;
+                email = value;
               },
             ),
           ),

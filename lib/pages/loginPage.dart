@@ -20,19 +20,19 @@ class _LoginPage extends State<LoginPage> {
   final formGlobalKey = GlobalKey<FormState>();
 
   late SharedPreferences _userInfo;
-  late String errormsg, tokenValue, phone, password;
+  late String errormsg, tokenValue, email, password;
   late bool error, showprogress, isUserLoginIn, responseTypeStatus = false;
 
   late SharedPreferences logindata;
 
-  var _phone = TextEditingController();
+  var _email = TextEditingController();
   var _password = TextEditingController();
 
   // ignore: missing_return
   Future<void> startLogin() async {
     String apiurl = apiBaseUrl + "login.php"; //api url
 
-    var response = await http.post(Uri.parse(apiurl), body: {'phone': phone, 'password': password, 'token_value': tokenValue});
+    var response = await http.post(Uri.parse(apiurl), body: {'email': _email, 'password': password, 'token_value': tokenValue});
 
     if (response.statusCode == 200) {
       var jsondata = json.decode(response.body);
@@ -84,7 +84,7 @@ class _LoginPage extends State<LoginPage> {
 
   @override
   void initState() {
-    phone = "";
+    email = "";
     password = "";
     errormsg = "";
     error = false;
@@ -167,15 +167,15 @@ class _LoginPage extends State<LoginPage> {
             padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
             margin: EdgeInsets.only(top: 10),
             child: TextField(
-              controller: _phone, //set phone controller
+              controller: _email, //set phone controller
               style: TextStyle(color: Color(0xFF000000), fontSize: 10),
               decoration: myInputDecoration(
-                label: "Phone",
+                label: "Email",
                 icon: Icons.person,
               ),
               onChanged: (value) {
                 //set phone  text on change
-                phone = value;
+                email = value;
               },
             ),
           ),
