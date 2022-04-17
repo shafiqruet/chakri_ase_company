@@ -33,7 +33,7 @@ class _EditProfilePage extends State<EditProfilePage> {
     logindata = await SharedPreferences.getInstance();
     uid = logindata.getString('memberUid')!;
 
-    String apiurl = apiBaseUrl + "member.php"; //api url
+    String apiurl = apiBaseUrl + "company.php"; //api url
     var requestData = {'phone': _phone.text, 'name': _name.text, 'email': _email.text, 'address': _address.text, 'action': 'update_profile', 'uid': uid};
 
     var response = await http.post(Uri.parse(apiurl), body: requestData);
@@ -84,7 +84,7 @@ class _EditProfilePage extends State<EditProfilePage> {
 
     uid = logindata.getString('memberUid')!;
 
-    String apiurl = apiBaseUrl + "member.php"; //api url
+    String apiurl = apiBaseUrl + "company.php"; //api url
 
     var response = await http.post(Uri.parse(apiurl), body: {'uid': uid, 'action': 'get_profile'});
 

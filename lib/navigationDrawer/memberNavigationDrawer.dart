@@ -68,43 +68,6 @@ class _MemberNavigatePage extends State<MemberNavigationDrawer> {
             text: 'Add Job',
             onTap: () => Navigator.pushReplacementNamed(context, PageRoutes.addJob),
           ),
-          ExpansionTile(
-            title: Row(
-              children: <Widget>[
-                Icon(Icons.settings),
-                Padding(
-                  padding: EdgeInsets.only(left: 12.0),
-                  child: Text("Manage Resume"),
-                )
-              ],
-            ),
-            children: <Widget>[
-              createDrawerBodyItem(
-                icon: Icons.account_box_outlined,
-                text: 'View Resume',
-                onTap: () => Navigator.pushReplacementNamed(context, PageRoutes.viewResume),
-                paddingValue: 40.0,
-              ),
-              createDrawerBodyItem(
-                icon: Icons.account_box_outlined,
-                text: 'Personal Info',
-                onTap: () => Navigator.pushReplacementNamed(context, PageRoutes.jobPortal),
-                paddingValue: 40.0,
-              ),
-              createDrawerBodyItem(
-                icon: Icons.work,
-                text: 'Job Experience',
-                onTap: () => Navigator.pushReplacementNamed(context, PageRoutes.jobExperience),
-                paddingValue: 40.0,
-              ),
-              createDrawerBodyItem(
-                icon: Icons.add_business,
-                text: 'Job Skills',
-                onTap: () => Navigator.pushReplacementNamed(context, PageRoutes.jobSkills),
-                paddingValue: 40.0,
-              ),
-            ],
-          ),
           createDrawerBodyItem(
             icon: Icons.logout,
             text: 'Logout',

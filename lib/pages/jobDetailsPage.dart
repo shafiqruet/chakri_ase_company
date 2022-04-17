@@ -78,43 +78,6 @@ class _JobDetailsPage extends State<JobDetailsPage> {
     super.initState();
   }
 
-  void applyJob() async {
-    logindata = await SharedPreferences.getInstance();
-
-    uid = logindata.getString('memberUid')!;
-    jobId = argumentsValue['id'];
-
-    String apiurl = apiBaseUrl + "job_apply.php"; //api url
-
-    var response = await http.post(Uri.parse(apiurl), body: {'uid': uid, 'jobId': jobId, 'action': 'job_apply'});
-
-    if (response.statusCode == 200) {
-      var jsondata = json.decode(response.body);
-
-      if (jsondata["errorCode"] == 0) {
-        setState(() {
-          error = true;
-          showprogress = false;
-          errormsg = jsondata["message"];
-          responseTypeStatus = true;
-        });
-      } else {
-        setState(() {
-          error = true;
-          showprogress = false;
-          errormsg = jsondata["message"];
-          responseTypeStatus = true;
-        });
-      }
-    } else {
-      setState(() {
-        showprogress = false; //don't show progress indicator
-        error = true;
-        errormsg = "Error during connecting to server.";
-      });
-    }
-  }
-
   void checkIfAlreadyLogin() async {
     logindata = await SharedPreferences.getInstance();
     //isUserLoginIn = logindata.getBool('isLoggedIn')!;
@@ -258,17 +221,6 @@ class _JobDetailsPage extends State<JobDetailsPage> {
         ),
         Html(
           data: "&nbsp;",
-        ),
-        TextButton(
-          style: TextButton.styleFrom(
-              primary: Colors.black,
-              padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
-              textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              backgroundColor: Color(0xFFA56E57)),
-          onPressed: () {
-            applyJob();
-          },
-          child: Text('Apply This Job'),
         ),
         Html(
           data: "&nbsp;",

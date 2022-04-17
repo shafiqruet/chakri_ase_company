@@ -7,10 +7,7 @@ import 'package:chakri_ase_company/pages/profilePage.dart';
 import 'package:chakri_ase_company/pages/logoutPage.dart';
 import 'package:chakri_ase_company/pages/editProfilePage.dart';
 import 'package:chakri_ase_company/pages/jobPortalPage.dart';
-import 'package:chakri_ase_company/pages/jobExperiencePage.dart';
 import 'package:chakri_ase_company/pages/jobListPage.dart';
-import 'package:chakri_ase_company/pages/jobSkillsPage.dart';
-import 'package:chakri_ase_company/pages/viewResumePage.dart';
 import 'package:chakri_ase_company/pages/addJobPage.dart';
 
 class PageRoutes {
@@ -23,9 +20,6 @@ class PageRoutes {
   static const String editProfile = EditProfilePage.routeName;
   static const String jobPortal = JobPortalPage.routeName;
   static const String jobList = JobListPage.routeName;
-  static const String jobExperience = JobExperiencePage.routeName;
-  static const String jobSkills = JobSkillsPage.routeName;
   static const String jobDetails = JobDetailsPage.routeName;
-  static const String viewResume = ViewResumePage.routeName;
   static const String addJob = AddJobPage.routeName;
 }

@@ -20,7 +20,7 @@ class _LoginPage extends State<LoginPage> {
   final formGlobalKey = GlobalKey<FormState>();
 
   late SharedPreferences _userInfo;
-  late String errormsg, tokenValue, email, password;
+  late String errormsg, email, password;
   late bool error, showprogress, isUserLoginIn, responseTypeStatus = false;
 
   late SharedPreferences logindata;
@@ -30,48 +30,39 @@ class _LoginPage extends State<LoginPage> {
 
   // ignore: missing_return
   Future<void> startLogin() async {
-    String apiurl = apiBaseUrl + "login.php"; //api url
+    String apiurl = apiBaseUrl + "company.php"; //api url
 
-    var response = await http.post(Uri.parse(apiurl), body: {'email': _email, 'password': password, 'token_value': tokenValue});
+    var response = await http.post(Uri.parse(apiurl), body: {'email': email, 'password': password, 'action': 'login'});
 
     if (response.statusCode == 200) {
       var jsondata = json.decode(response.body);
-      if (jsondata["error"]) {
+      if (jsondata["errorCode"] == 0) {
+        setState(() {
+          error = false;
+          showprogress = false;
+          responseTypeStatus = true;
+        });
+
+        //save the data returned from server
+        //and navigate to home page
+        String uid = jsondata["uid"];
+
+        _userInfo = await SharedPreferences.getInstance();
+
+        // set value
+        _userInfo.setString('memberUid', uid);
+        _userInfo.setBool('isLoggedIn', true);
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => DashboardPage()),
+        );
+      } else {
         setState(() {
           showprogress = false; //don't show progress indicator
           error = true;
           errormsg = jsondata["message"];
         });
-      } else {
-        if (jsondata["success"]) {
-          setState(() {
-            error = false;
-            showprogress = false;
-            responseTypeStatus = true;
-          });
-          //save the data returned from server
-          //and navigate to home page
-          String uid = jsondata["uid"];
-
-          _userInfo = await SharedPreferences.getInstance();
-
-          // set value
-          _userInfo.setString('memberUid', uid);
-          _userInfo.setBool('isLoggedIn', true);
-
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DashboardPage()),
-          );
-          //print(fullname);
-          //user shared preference to save data
-        } else {
-          setState(() {
-            showprogress = false; //don't show progress indicator
-            error = false;
-            errormsg = jsondata["message"];
-          });
-        }
       }
     } else {
       setState(() {
@@ -89,7 +80,6 @@ class _LoginPage extends State<LoginPage> {
     errormsg = "";
     error = false;
     showprogress = false;
-    tokenValue = "";
     responseTypeStatus = false;
 
     super.initState();

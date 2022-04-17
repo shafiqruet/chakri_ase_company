@@ -1,18 +1,15 @@
+import 'package:flutter/material.dart';
 import 'package:chakri_ase_company/pages/addJobPage.dart';
 import 'package:chakri_ase_company/pages/editProfilePage.dart';
 import 'package:chakri_ase_company/pages/jobDetailsPage.dart';
 import 'package:chakri_ase_company/pages/jobListPage.dart';
 import 'package:chakri_ase_company/pages/logoutPage.dart';
 import 'package:chakri_ase_company/pages/profilePage.dart';
-import 'package:chakri_ase_company/pages/viewResumePage.dart';
-import 'package:flutter/material.dart';
 import 'package:chakri_ase_company/pages/homePage.dart';
 import 'package:chakri_ase_company/pages/loginPage.dart';
 import 'package:chakri_ase_company/pages/registerPage.dart';
 import 'package:chakri_ase_company/pages/dashboardPage.dart';
 import 'package:chakri_ase_company/pages/jobPortalPage.dart';
-import 'package:chakri_ase_company/pages/jobExperiencePage.dart';
-import 'package:chakri_ase_company/pages/jobSkillsPage.dart';
 import 'package:chakri_ase_company/routes/pageRoutes.dart';
 
 void main() => runApp(MyApp());
@@ -38,11 +35,8 @@ class _MyAppState extends State<MyApp> {
         PageRoutes.logout: (context) => LogoutPage(),
         PageRoutes.editProfile: (context) => EditProfilePage(),
         PageRoutes.jobPortal: (context) => JobPortalPage(),
-        PageRoutes.jobExperience: (context) => JobExperiencePage(),
-        PageRoutes.jobSkills: (context) => JobSkillsPage(),
         PageRoutes.jobList: (context) => JobListPage(),
         "/jobDetails": (context) => JobDetailsPage(),
-        PageRoutes.viewResume: (context) => ViewResumePage(),
         PageRoutes.addJob: (context) => AddJobPage(),
       },
     );

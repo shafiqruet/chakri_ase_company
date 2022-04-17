@@ -54,7 +54,7 @@ InputDecoration myInputDecorationWithoutIcon({String? label}) {
 
 Widget showMessage(String text, responseTypeStatus) {
   //error message widget.
-  int color = responseTypeStatus != false ? 0xFF54A34C : 0xFFA56E57;
+  int color = responseTypeStatus != false ? 0xFF54A34C : 0xFF990000;
   return Container(
     width: double.infinity,
     padding: EdgeInsets.fromLTRB(10, 12, 10, 12),

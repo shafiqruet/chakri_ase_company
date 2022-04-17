@@ -56,7 +56,7 @@ class _ProfilePage extends State<ProfilePage> {
 
     uid = logindata.getString('memberUid')!;
 
-    String apiurl = apiBaseUrl + "member.php"; //api url
+    String apiurl = apiBaseUrl + "company.php"; //api url
 
     var response = await http.post(Uri.parse(apiurl), body: {'uid': uid, 'action': 'get_profile'});
 
